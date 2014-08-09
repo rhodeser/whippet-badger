@@ -1,0 +1,6 @@
+-- Equivalence checking by model checking
+-- Using sequential design from homework 2
+
+MODULE main
+VAR
+    

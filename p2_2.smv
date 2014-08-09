@@ -1,0 +1,40 @@
+-- Model checking with Kripke structures
+-- This describes the second diagram on Task 2.
+
+MODULE main
+VAR
+        -- states 1-7
+    state           : array 2..0
+        -- inputs in each stage   
+    start               : boolean
+    close               : boolean
+    heat                : boolean
+    error               : boolean
+
+IVAR
+    --inputs 
+    start_oven
+    -- need statuses?
+    -- start oven, open door, close door, warm up, start cooking, cook
+
+    init (state)        := 1;
+    init (start)        := 0;
+    init (close)        := 0;
+    init (heat)         := 0;
+    init (error)        := 0;
+
+    next (state)        :=
+        case 
+           state = 1            :        2;
+           state = 2            :        5; 
+           state = 3            :   {1, 6};
+           state = 4            :{4, 1, 3};       
+           state = 5            :        3;
+           state = 6            :        7;
+           state = 7            :        4;
+
+
+    -- define if in state ___, a,b,c = ___
+
+
+
