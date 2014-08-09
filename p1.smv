@@ -1,0 +1,56 @@
+-- Digital Lock NuSMV module
+MODULE main
+VAR
+        -- from positions 0-31 (32-39 ignored)
+    position        : array 4..0 of boolean;
+        -- 4 states in locking process, 0,12,21,15
+    state           : array 2..0 of boolean;
+        -- counter-clockwise movement of dial 
+    upReg           : boolean;
+        -- clockwise movement of dial 
+    downReg         : boolean;
+
+    --TODO: establish relationship between status and states (state[3] = open) 
+            -- (state[2] * state[1] * state[0] = closed)
+    status          : {open, closed};
+
+IVAR 
+    up              : boolean;
+    down            : boolean;
+    clock           : boolean;
+
+-- initializing each variable
+
+    init (position) := 0;
+    init (state)    := 0;
+    init (upReg)    := 0;
+    init (downReg)  := 0;
+
+    next (state)    := 
+        case
+           state = 0            :   { 
+
+        
+-- modeling 
+-- have inputs/outputs? with IVAR up, down, clock
+
+SPEC
+-- Define our 5 new specifications 
+
+-- This property states that if the lock is open and it is not interrupted, it can remain open indefinitely.
+    (AG (open & ~up & ~down) -> (open))
+
+-- This property states that a transition to state two can only happen under the required circumstances.
+	AG(state=1 & ~open & down & ~up & position=21) -> (state=2)
+
+-- This property states that if the lock is open and it is interrupted the the lock will close.
+	AG((open & up & ~down) | (open & down & ~up)) -> AX(~open)
+
+-- This property states that it is always possible for the lock to be closed.
+	AG(EF(~open))
+
+-- This property states that the lock will not open by counting down to 15.
+	AG(down & position=15) -> (~open)
+
+
+
