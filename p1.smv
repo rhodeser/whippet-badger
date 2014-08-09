@@ -11,7 +11,6 @@ VAR
     downReg         : boolean;
 
     --TODO: establish relationship between status and states (state[3] = open) 
-            -- (state[2] * state[1] * state[0] = closed)
     status          : {open, closed};
 
 IVAR 
@@ -26,12 +25,42 @@ IVAR
     init (upReg)    := 0;
     init (downReg)  := 0;
 
+    -- reachability states, not including inputs...
+    -- This is probably not detailed enough, but was in the example. Better version below
     next (state)    := 
         case
-           state = 0            :   { 
+           state = 0             :   {0, 1}
+           state = 1             :   {0, 1, 2}
+           state = 2             :   {0, 2, 3}
+           state = 3             :   {0, 3, 4}
+        esac
+    
+    -- Defining when we're turning left or right
+    next (upReg)        := up & ~down;
+    next (downReg)      := ~up & down;
+     
+    -- states including input values and positions 
+    next (state)    := 
+        case
+          --not needed...  up & down | ~up & ~down                         : break;        -- is this even legal?
+            state = 0 & upReg & position    = 12          : 1;
+            state = 1 & downReg & position  = 21          : 2;
+            state = 2 & upReg & position    = 15          : 3;
+            state = 3 & (upReg | downReg)                 : 0; 
+            -- No other combination of inputs will change the state 
+        esac
 
-        
--- modeling 
+    next (position) :=
+        case 
+            up & ~down  : position - 1; 
+            ~up & down  : position + 1; 
+            -- else it stays the same
+
+    -- specify that open happens when we're in state 3
+    open            := state = 3;
+    -- closed          := (state[2] * state[1] * state[0] = closed)
+
+            
 -- have inputs/outputs? with IVAR up, down, clock
 
 SPEC
