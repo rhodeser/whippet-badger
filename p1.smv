@@ -8,7 +8,7 @@ VAR
         -- from positions 0-31 (32-39 ignored)
     position        : 0..31;
         -- 4 states in locking process, 0,12,21,15
-    state           : 0..3;
+    state           : {start_0, left_12, right_21, open_15};
         -- counter-clockwise movement of dial 
     upReg           : boolean;
         -- clockwise movement of dial 
@@ -24,17 +24,16 @@ VAR
 
 
 
--- initializing each variable
 ASSIGN
-    position := 0;
-    state    := 0;
+    init (position) := 0;
+    init (state)    := start_0;
     init (upReg)    := FALSE;
     init (downReg)  := FALSE;
     init (open)     := FALSE;
 
     next (open)     := 
     -- if we're in the last state, the lock is open
-        case state = 3 : TRUE;
+        case state = open_15 : TRUE;
     -- otherwise it's closed
         TRUE : FALSE;
         esac;
@@ -57,10 +56,11 @@ ASSIGN
     next (state)    := 
         case
           --not needed...  up & down | !up & !down                         : break;        -- is this even legal?
-            (state = 0) & (upReg) & (position = 12)          : 1;
-            (state = 1) & (downReg) & (position  = 21)       : 2;
-            (state = 2) & (upReg) & (position    = 15)       : 3;
-            (state = 3) & (upReg | downReg)                  : 0; 
+            (state = start_0) & (upReg) & (position = 12)          : left_12;
+            (state = left_12) & (downReg) & (position  = 21)       : right_21;
+            (state = right_21) & (upReg) & (position    = 15)       : open_15;
+            (state = open_15) & (upReg | downReg)                  : start_0; 
+            TRUE : state;
             -- No other combination of inputs will change the state 
         esac;
 
@@ -71,6 +71,7 @@ ASSIGN
             up & !down  : position - 1; 
             !up & down  : position + 1; 
             -- else it stays the same
+            TRUE : position;
         esac;
 
     -- specify that open happens when we're in state 3
@@ -81,10 +82,11 @@ ASSIGN
 
 
 -- This property states that if the lock is open and it is not interrupted, it can remain open indefinitely.
+--SPEC AG (yep.open) ->(!yep.open)
 SPEC AG (open & !up & !down) -> (open)
 
 -- This property states that a transition to state two can only happen under the required circumstances.
-SPEC AG (state=1 & !open & down & !up & position=21) -> (state=2)
+SPEC AG (state=left_12 & !open & down & !up & position=21) -> (state = right_21)
 
 -- This property states that if the lock is open and it is interrupted the the lock will close.
 SPEC AG((open & up & !down) | (open & down & !up)) -> AX(!open)
