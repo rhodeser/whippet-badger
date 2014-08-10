@@ -2,5 +2,92 @@
 -- Using sequential design from homework 2
 
 MODULE main
+
 VAR
-    
+	-- Sixteen state of the product machine
+	state	: {S0, S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15};
+	
+	-- Input variable
+	x 	: boolean;
+	
+	-- Output variable
+	out	: boolean;
+	
+	
+ASSIGN
+	init(state) 	:= S0;
+	init(x)		:= FALSE;
+	init(out)	:= FALSE;
+	
+
+next (state) :=
+	case
+		(state = S0) & (x)	: S5;
+		(state = S0) & (!x)	: S10;
+		(state = S1) & (x)	: S12;
+		(state = S1) & (!x)	: S11;
+		(state = S2) & (x)	: S15; 
+		(state = S2) & (!x)	: S10;
+		(state = S3) & (x)	: S12;
+		(state = S3) & (!x)	: S9;
+		(state = S4) & (x)	: S3;
+		(state = S4) & (!x)	: S14;
+		(state = S5) & (x)	: S0;
+		(state = S5) & (!x)	: S15;
+		(state = S6) & (x)	: S3;
+		(state = S6) & (!x)	: S14;
+		(state = S7) & (x)	: S0;
+		(state = S7) & (!x)	: S13;
+		(state = S8) & (x)	: S15;
+		(state = S8) & (!x)	: S10;
+		(state = S9) & (x)	: S12;
+		(state = S9) & (!x)	: S9;
+		(state = S10) & (x)	: S15;
+		(state = S10) & (!x)	: S10;
+		(state = S11) & (x)	: S12;
+		(state = S11) & (!x)	: S9;
+		(state = S12) & (x)	: S3;
+		(state = S12) & (!x)	: S6;
+		(state = S13) & (x)	: S0;
+		(state = S13) & (!x)	: S5;
+		(state = S14) & (x)	: S3;
+		(state = S14) & (!x)	: S6;
+		(state = S15) & (x)	: S0;
+		(state = S15) & (!x)	: S5;		
+	esac
+	
+next (out) := 
+	case
+		(state = S0) & (x)	: TRUE;
+		(state = S0) & (!x)	: TRUE;
+		(state = S1) & (x)	: FALSE;
+		(state = S1) & (!x)	: FALSE;
+		(state = S2) & (x)	: FALSE;
+		(state = S2) & (!x)	: FALSE;
+		(state = S3) & (x)	: FALSE;
+		(state = S3) & (!x)	: FALSE;
+		(state = S4) & (x)	: FALSE;
+		(state = S4) & (!x)	: FALSE;
+		(state = S5) & (x)	: TRUE;
+		(state = S5) & (!x)	: TRUE;
+		(state = S6) & (x)	: FALSE;
+		(state = S6) & (!x)	: FALSE;
+		(state = S7) & (x)	: FALSE;
+		(state = S7) & (!x)	: FALSE;
+		(state = S8) & (x)	: FALSE;
+		(state = S8) & (!x)	: FALSE;
+		(state = S9) & (x)	: FALSE;
+		(state = S9) & (!x)	: FALSE;
+		(state = S10) & (x)	: TRUE;
+		(state = S10) & (!x)	: TRUE;
+		(state = S11) & (x)	: FALSE;
+		(state = S11) & (!x)	: FALSE;
+		(state = S12) & (x)	: FALSE;
+		(state = S12) & (!x)	: FALSE;
+		(state = S13) & (x)	: FALSE;
+		(state = S13) & (!x)	: FALSE;
+		(state = S14) & (x)	: FALSE;
+		(state = S14) & (!x)	: FALSE;
+		(state = S15) & (x)	: TRUE;
+		(state = S15) & (!x)	: TRUE;
+	esac
