@@ -6,10 +6,10 @@ VAR
         -- states 1-7
     state           : array 2..0
         -- inputs in each stage   
-    start               : boolean
-    close               : boolean
-    heat                : boolean
-    error               : boolean
+    start               : boolean;
+    close               : boolean;
+    heat                : boolean;
+    error               : boolean;
 
 IVAR
     --inputs 
@@ -32,7 +32,7 @@ IVAR
            state = 5            :        3;
            state = 6            :        7;
            state = 7            :        4;
-
+        esac;
 
     -- define if in state ___, a,b,c = ___
 SPEC

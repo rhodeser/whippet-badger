@@ -22,7 +22,7 @@ IVAR
     --clock           : boolean;
 
 -- initializing each variable
-
+ASSIGN
     init (position) := 0;
     init (state)    := 0;
     init (upReg)    := 0;
@@ -30,37 +30,38 @@ IVAR
 
     -- reachability states, not including inputs...
     -- This is probably not detailed enough, but was in the example. Better version below
-    next (state)    := 
-        case
-           state = 0             :   {0, 1}
-           state = 1             :   {0, 1, 2}
-           state = 2             :   {0, 2, 3}
-           state = 3             :   {0, 3, 4}
-        esac
+    -- next (state)    := 
+    --    case
+    --       state = 0             :   {0, 1};
+    --       state = 1             :   {0, 1, 2};
+    --       state = 2             :   {0, 2, 3};
+    --       state = 3             :   {0, 3, 4};
+    --   esac
     
     -- Defining when we're turning left or right
-    next (upReg)        := up & ~down;
-    next (downReg)      := ~up & down;
-     
+    next (upReg)        := up & !down;
+    next (downReg)      := !up & down;
+      
     -- states including input values and positions 
     next (state)    := 
         case
-          --not needed...  up & down | ~up & ~down                         : break;        -- is this even legal?
+          --not needed...  up & down | !up & !down                         : break;        -- is this even legal?
             state = 0 & upReg & position    = 12          : 1;
             state = 1 & downReg & position  = 21          : 2;
             state = 2 & upReg & position    = 15          : 3;
             state = 3 & (upReg | downReg)                 : 0; 
             -- No other combination of inputs will change the state 
-        esac
+        esac;
 
     next (position) :=
         case 
-            up & ~down  : position - 1; 
-            ~up & down  : position + 1; 
+            up & !down  : position - 1; 
+            !up & down  : position + 1; 
             -- else it stays the same
+        esac;
 
     -- specify that open happens when we're in state 3
-    open            := state = 3;
+    -- open            := state = 3;
     -- closed          := (state[2] * state[1] * state[0] = closed)
 
             
@@ -70,19 +71,19 @@ SPEC
 -- Define our 5 new specifications 
 
 -- This property states that if the lock is open and it is not interrupted, it can remain open indefinitely.
-    (AG (open & ~up & ~down) -> (open))
+    AG (open & !up & !down) -> (open)
 
 -- This property states that a transition to state two can only happen under the required circumstances.
-	AG(state=1 & ~open & down & ~up & position=21) -> (state=2)
+	AG (state=1 & !open & down & !up & position=21) -> (state=2)
 
 -- This property states that if the lock is open and it is interrupted the the lock will close.
-	AG((open & up & ~down) | (open & down & ~up)) -> AX(~open)
+	AG((open & up & !down) | (open & down & !up)) -> AX(!open)
 
 -- This property states that it is always possible for the lock to be closed.
-	AG(EF(~open))
+	AG(EF(!open))
 
 -- This property states that the lock will not open by counting down to 15.
-	AG(down & position=15) -> (~open)
+	AG(down & position=15) -> (!open)
 
 
 
