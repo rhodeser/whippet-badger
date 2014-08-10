@@ -1,32 +1,43 @@
 -- Digital Lock NuSMV module
 
 -- TODO: Instantiations? 
+-- inputs (from command line?)
 
 MODULE main
 VAR
         -- from positions 0-31 (32-39 ignored)
-    position        : array 4..0 of boolean;
+    position        : array 0..4 of boolean;
         -- 4 states in locking process, 0,12,21,15
-    state           : array 1..0 of boolean;
+    state           : array 0..1 of boolean;
         -- counter-clockwise movement of dial 
     upReg           : boolean;
         -- clockwise movement of dial 
     downReg         : boolean;
 
-    --TODO: establish relationship between status and states (state[3] = open) 
-    status          : {open, closed};
+    --TODO: establish relationship between open and states (state[3] = open) 
+    open            : boolean;
 
-IVAR 
+--IVAR 
     up              : boolean;
     down            : boolean;
     --clock           : boolean;
 
+
+
 -- initializing each variable
 ASSIGN
-    init (position) := 0;
-    init (state)    := 0;
+    --init (position) := 0;
+    --init (state)    := 0;
     init (upReg)    := 0;
     init (downReg)  := 0;
+    init (open)     := 0;
+
+    next (open)     := 
+    -- if we're in the last state, the lock is open
+        case state = 3 : 1;
+    -- otherwise it's closed
+        1 : 0;
+        esac;
 
     -- reachability states, not including inputs...
     -- This is probably not detailed enough, but was in the example. Better version below
@@ -36,7 +47,7 @@ ASSIGN
     --       state = 1             :   {0, 1, 2};
     --       state = 2             :   {0, 2, 3};
     --       state = 3             :   {0, 3, 4};
-    --   esac
+    --   esac;
     
     -- Defining when we're turning left or right
     next (upReg)        := up & !down;
@@ -46,15 +57,17 @@ ASSIGN
     next (state)    := 
         case
           --not needed...  up & down | !up & !down                         : break;        -- is this even legal?
-            state = 0 & upReg & position    = 12          : 1;
-            state = 1 & downReg & position  = 21          : 2;
-            state = 2 & upReg & position    = 15          : 3;
-            state = 3 & (upReg | downReg)                 : 0; 
+            (state = 0) & (upReg) & (position = 12)          : 1;
+            (state = 1) & (downReg) & (position  = 21)       : 2;
+            (state = 2) & (upReg) & (position    = 15)       : 3;
+            (state = 3) & (upReg | downReg)                  : 0; 
             -- No other combination of inputs will change the state 
         esac;
 
     next (position) :=
         case 
+            (up & !down) & position = 0  : 31; 
+            (!up & down) & position = 31  : 0;
             up & !down  : position - 1; 
             !up & down  : position + 1; 
             -- else it stays the same
@@ -62,28 +75,25 @@ ASSIGN
 
     -- specify that open happens when we're in state 3
     -- open            := state = 3;
-    -- closed          := (state[2] * state[1] * state[0] = closed)
 
             
 -- have inputs/outputs? with IVAR up, down, clock
 
-SPEC
--- Define our 5 new specifications 
 
 -- This property states that if the lock is open and it is not interrupted, it can remain open indefinitely.
-    AG (open & !up & !down) -> (open)
+SPEC AG (open & !up & !down) -> (open)
 
 -- This property states that a transition to state two can only happen under the required circumstances.
-	AG (state=1 & !open & down & !up & position=21) -> (state=2)
+SPEC AG (state=1 & !open & down & !up & position=21) -> (state=2)
 
 -- This property states that if the lock is open and it is interrupted the the lock will close.
-	AG((open & up & !down) | (open & down & !up)) -> AX(!open)
+SPEC AG((open & up & !down) | (open & down & !up)) -> AX(!open)
 
 -- This property states that it is always possible for the lock to be closed.
-	AG(EF(!open))
+SPEC AG(EF(!open))
 
 -- This property states that the lock will not open by counting down to 15.
-	AG(down & position=15) -> (!open)
+SPEC AG(down & position=15) -> (!open)
 
 
 

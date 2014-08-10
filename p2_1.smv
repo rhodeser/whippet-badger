@@ -6,9 +6,9 @@ VAR
         -- states 1-5
     state           : array 2..0
         -- inputs in each stage   
-    a               : boolean
-    b               : boolean
-    c               : boolean
+    a               : boolean;
+    b               : boolean;
+    c               : boolean;
 
     init (state)    := 1;
     init (a)        := 0;
@@ -24,12 +24,16 @@ VAR
            state = 5            :{1, 3, 5};
         esac;
 
+--how to write what current vars are, a,b,c
+        --if state = 1, : a
+
     -- Include a,b,c values in here ^  ?
     -- define if in state ___, a,b,c = ___
 
 SPEC
 -- This property states that from state three, the next transition must be to state four.
-    AG(state=3) -> AX(state=4)
+   -- AG(state=3) -> AX(state=4)
+   A (G state = 3) -> A (X state = 4)
 
 -- This property states that from state four, the next transition must be to state two.
     AG(state=4) -> AX(state=2)
