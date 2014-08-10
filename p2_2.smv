@@ -20,9 +20,6 @@ VAR
     reset               : boolean;
 
     --inputs 
-    -- start_oven
-    -- need statuses?
-    -- start oven, open door, close door, warm up, start cooking, cook
     -- need to specify how we get to each of them?
 
 ASSIGN
