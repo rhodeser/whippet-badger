@@ -3,4 +3,22 @@
 
 MODULE main
 VAR
-    
+   state        : 0..15;
+   a            : boolean;
+   b            : boolean;
+
+ASSIGN
+    init (state) :=     0;
+    init (a)     := FALSE;
+    init (b)     := FALSE;
+
+    next(state)     :=
+        case
+        -- NOTE: These only include reachable states
+            state = 0       :   {5, 10} ;
+            state = 5       :   {0, 15} ;
+            state = 10      :   {10, 15};
+            state = 15      :   {0, 5}  ;
+        esac;
+
+SPEC     
