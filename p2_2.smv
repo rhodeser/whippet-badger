@@ -4,24 +4,34 @@
 MODULE main
 VAR
         -- states 1-7
-    state           : array 2..0
+    state           : 1..7;
         -- inputs in each stage   
     start               : boolean;
     close               : boolean;
     heat                : boolean;
     error               : boolean;
 
-IVAR
+    start_oven          : boolean;
+    open_door           : boolean;
+    close_door          : boolean;
+    warm_up             : boolean;
+    start_cooking       : boolean;
+    cook                : boolean;
+    reset               : boolean;
+
     --inputs 
-    start_oven
+    -- start_oven
     -- need statuses?
     -- start oven, open door, close door, warm up, start cooking, cook
+    -- need to specify how we get to each of them?
 
+ASSIGN
     init (state)        := 1;
-    init (start)        := 0;
-    init (close)        := 0;
-    init (heat)         := 0;
-    init (error)        := 0;
+    init (start)        := FALSE;
+    init (close)        := FALSE;
+    init (heat)         := FALSE;
+    init (error)        := FALSE;
+    --init (open_door)    := FALSE;
 
     next (state)        :=
         case 
@@ -35,21 +45,20 @@ IVAR
         esac;
 
     -- define if in state ___, a,b,c = ___
-SPEC
 
 -- This property states that from state six, the next transition must be to state seven.
-    AG(state=6) -> AX(state=7)
+SPEC   AG(state=6) -> AX(state=7)
 
 -- This property states that from state three, the next transition must be to state four.
-    AG(state=7) -> AX(state=4)
+SPEC      AG(state=7) -> AX(state=4)
 
 -- This property states that if in state three and the door is open then the next state, is state one.
-    AG(state=3 * door) -> AX(state=1)
+SPEC      AG(state=3 & open_door) -> AX(state=1)
 
 -- This property states that if in state five and a reset is signaled then the next state, is state three.
-    AG(state=5 * reset) -> AX(state=3)
+SPEC      AG(state=5 & reset) -> AX(state=3)
 
 -- This property states that if in state four and it is cooking then it will remain in state fout.
-    AG(state=4 * cook) -> AX(state=4)
+SPEC      AG(state=4 & cook) -> AX(state=4)
 
 

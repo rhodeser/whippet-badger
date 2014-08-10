@@ -4,16 +4,18 @@
 MODULE main
 VAR
         -- states 1-5
-    state           : array 2..0
+    state           : 1..5;
         -- inputs in each stage   
     a               : boolean;
     b               : boolean;
     c               : boolean;
 
+
+ASSIGN
     init (state)    := 1;
-    init (a)        := 0;
-    init (b)        := 0;
-    init (c)        := 0;
+    init (a)        := FALSE;
+    init (b)        := FALSE;
+    init (c)        := FALSE;
 
     next (state)    :=
         case 
@@ -30,20 +32,19 @@ VAR
     -- Include a,b,c values in here ^  ?
     -- define if in state ___, a,b,c = ___
 
-SPEC
+
 -- This property states that from state three, the next transition must be to state four.
-   -- AG(state=3) -> AX(state=4)
-   A (G state = 3) -> A (X state = 4)
+SPEC    AG(state=3) -> AX(state=4)
 
 -- This property states that from state four, the next transition must be to state two.
-    AG(state=4) -> AX(state=2)
+SPEC    AG(state=4) -> AX(state=2)
 
 -- This property states that from state five, it is possible to remain in state five indefinitely.
-    AG(state=5) -> EG(state=5)
+ SPEC    AG(state=5) -> EG(state=5)
 
 -- This property states that from state one, the next state cannot be five.
-    AG(state=1) -> ~EG(state=5)
+SPEC    AG(state=1) -> !EG(state=5)
 
 -- This property states that state three is reachable by state two or state five.
-    AG(state=2 | state=5) -> AX(state=3) 
+ SPEC   AG(state=2 | state=5) -> AX(state=3) 
 
