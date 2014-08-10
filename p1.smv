@@ -6,9 +6,9 @@
 MODULE main
 VAR
         -- from positions 0-31 (32-39 ignored)
-    position        : array 0..4 of boolean;
+    position        : 0..31;
         -- 4 states in locking process, 0,12,21,15
-    state           : array 0..1 of boolean;
+    state           : 0..3;
         -- counter-clockwise movement of dial 
     upReg           : boolean;
         -- clockwise movement of dial 
@@ -26,17 +26,17 @@ VAR
 
 -- initializing each variable
 ASSIGN
-    --init (position) := 0;
-    --init (state)    := 0;
-    init (upReg)    := 0;
-    init (downReg)  := 0;
-    init (open)     := 0;
+    position := 0;
+    state    := 0;
+    init (upReg)    := FALSE;
+    init (downReg)  := FALSE;
+    init (open)     := FALSE;
 
     next (open)     := 
     -- if we're in the last state, the lock is open
-        case state = 3 : 1;
+        case state = 3 : TRUE;
     -- otherwise it's closed
-        1 : 0;
+        TRUE : FALSE;
         esac;
 
     -- reachability states, not including inputs...
