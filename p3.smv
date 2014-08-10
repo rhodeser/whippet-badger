@@ -56,39 +56,39 @@ next (state) :=
 		(state = S15) & (!x)	: S5;		
 	esac;
 	
---next (out) := 
---	case
---		(state = S0) & (x)	: TRUE;
---		(state = S0) & (!x)	: TRUE;
---		(state = S1) & (x)	: FALSE;
---		(state = S1) & (!x)	: FALSE;
---		(state = S2) & (x)	: FALSE;
---		(state = S2) & (!x)	: FALSE;
---		(state = S3) & (x)	: FALSE;
---		(state = S3) & (!x)	: FALSE;
---		(state = S4) & (x)	: FALSE;
---		(state = S4) & (!x)	: FALSE;
---		(state = S5) & (x)	: TRUE;
---		(state = S5) & (!x)	: TRUE;
---		(state = S6) & (x)	: FALSE;
---		(state = S6) & (!x)	: FALSE;
---		(state = S7) & (x)	: FALSE;
---		(state = S7) & (!x)	: FALSE;
---		(state = S8) & (x)	: FALSE;
---		(state = S8) & (!x)	: FALSE;
---		(state = S9) & (x)	: FALSE;
---		(state = S9) & (!x)	: FALSE;
---		(state = S10) & (x)	: TRUE;
---		(state = S10) & (!x)	: TRUE;
---		(state = S11) & (x)	: FALSE;
---		(state = S11) & (!x)	: FALSE;
---		(state = S12) & (x)	: FALSE;
---		(state = S12) & (!x)	: FALSE;
---		(state = S13) & (x)	: FALSE;
---		(state = S13) & (!x)	: FALSE;
---		(state = S14) & (x)	: FALSE;
---		(state = S14) & (!x)	: FALSE;
---		(state = S15) & (x)	: TRUE;
---		(state = S15) & (!x)	: TRUE;
---	esac;
+next (out) := 
+	case
+		(state = S0) & (x)	: TRUE;
+		(state = S0) & (!x)	: TRUE;
+		(state = S1) & (x)	: FALSE;
+		(state = S1) & (!x)	: FALSE;
+		(state = S2) & (x)	: FALSE;
+		(state = S2) & (!x)	: FALSE;
+		(state = S3) & (x)	: FALSE;
+		(state = S3) & (!x)	: FALSE;
+		(state = S4) & (x)	: FALSE;
+		(state = S4) & (!x)	: FALSE;
+		(state = S5) & (x)	: TRUE;
+		(state = S5) & (!x)	: TRUE;
+		(state = S6) & (x)	: FALSE;
+		(state = S6) & (!x)	: FALSE;
+		(state = S7) & (x)	: FALSE;
+		(state = S7) & (!x)	: FALSE;
+		(state = S8) & (x)	: FALSE;
+		(state = S8) & (!x)	: FALSE;
+		(state = S9) & (x)	: FALSE;
+		(state = S9) & (!x)	: FALSE;
+		(state = S10) & (x)	: TRUE;
+		(state = S10) & (!x)	: TRUE;
+		(state = S11) & (x)	: FALSE;
+		(state = S11) & (!x)	: FALSE;
+		(state = S12) & (x)	: FALSE;
+		(state = S12) & (!x)	: FALSE;
+		(state = S13) & (x)	: FALSE;
+		(state = S13) & (!x)	: FALSE;
+		(state = S14) & (x)	: FALSE;
+		(state = S14) & (!x)	: FALSE;
+		(state = S15) & (x)	: TRUE;
+		(state = S15) & (!x)	: TRUE;
+	esac;
 
