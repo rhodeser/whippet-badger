@@ -27,5 +27,18 @@ VAR
     -- define if in state ___, a,b,c = ___
 
 SPEC
--- put specs in here
+-- This property states that from state three, the next transition must be to state four.
+    AG(state=3) -> AX(state=4)
+
+-- This property states that from state four, the next transition must be to state two.
+    AG(state=4) -> AX(state=2)
+
+-- This property states that from state five, it is possible to remain in state five indefinitely.
+    AG(state=5) -> EG(state=5)
+
+-- This property states that from state one, the next state cannot be five.
+    AG(state=1) -> ~EG(state=5)
+
+-- This property states that state three is reachable by state two or state five.
+    AG(state=2 | state=5) -> AX(state=3) 
 

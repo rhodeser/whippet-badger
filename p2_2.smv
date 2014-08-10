@@ -35,6 +35,21 @@ IVAR
 
 
     -- define if in state ___, a,b,c = ___
+SPEC
 
+-- This property states that from state six, the next transition must be to state seven.
+    AG(state=6) -> AX(state=7)
+
+-- This property states that from state three, the next transition must be to state four.
+    AG(state=7) -> AX(state=4)
+
+-- This property states that if in state three and the door is open then the next state, is state one.
+    AG(state=3 * door) -> AX(state=1)
+
+-- This property states that if in state five and a reset is signaled then the next state, is state three.
+    AG(state=5 * reset) -> AX(state=3)
+
+-- This property states that if in state four and it is cooking then it will remain in state fout.
+    AG(state=4 * cook) -> AX(state=4)
 
 
