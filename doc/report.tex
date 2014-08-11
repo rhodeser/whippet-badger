@@ -59,35 +59,6 @@
 	
 \newpage
 
-% -------------------------PROJECT DELIVERABLES
-%Part 1:
-%Make circuit with 9 gates
-%Draw circuit
-%Make another identical copy C2. Prove C1=C2 by a Sat solver automatically.
-%Download a SAT solver for satisfiability
-%
-%Part 2:
-%Replace one gate with a different one
-%Prove/disprove C1=C3 by a SAT solver automatically
-%
-%For the report, describe:
-%Method to check equivalence by a SAT solver
-%All CNF forms used in the proof
-%All formulas and figures should be typed and drawn in software
-%Detailed discussion of our derivation and solution
-
-
-
-\section{Introduction} 
-Talk about model checking
-
-
-%\begin{figure}[h]\centering
-%\includegraphics[height=0.45\textwidth]{images/c1.PNG}
-%	\caption{Original Circuit}
-%		\label{c1}
-%	\end{figure}
-
 
 %Symbols \And \wedge \vee \neg \to \gets \iff
 
@@ -96,9 +67,6 @@ Talk about model checking
 The combinational lock verified blah blah blah...
 	
 	\subsection{Added properties}
-	
-	
-
 	\textbf{Property 1:} AG((open * ~up * ~down) $\to$ (open)) 	\\	
 	\textbf{Description:} If the lock is open and it is not interrupted, it can remain open indefinitely. \\
 	\vspace{12pt}
@@ -187,11 +155,11 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 	\end{lstlisting}
 	
 	\subsubsection{Proofs}
-	The properties mentioned above are explain in figure \ref{p2_p}.
+	The properties mentioned above are explain in figure \ref{p2_1_p}.
 	\begin{figure}[h]\centering
 	\includegraphics[height=0.45\textwidth]{images/p2_1_proof.png}
 		\caption{State Diagram Explaining Results}
-			\label{p2_p}
+			\label{p2_1_p}
 		\end{figure}
 \begin{enumerate}
 \item If in state three there is only one possible transition. When in state three the next state will be state four.
@@ -237,11 +205,11 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 	
 	
 	\subsubsection{Proofs}
-	
+	The properties mentioned above are explain in figure \ref{p2_2_p}.
 	\begin{figure}[h]\centering
 	\includegraphics[height=0.45\textwidth]{images/p2_2_proof.png}
 		\caption{Oven State Diagram}
-			\label{p2_p}
+			\label{p2_2_p}
 		\end{figure}
 
 
