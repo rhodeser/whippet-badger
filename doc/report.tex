@@ -52,7 +52,7 @@
 
 
 \begin{figure}[h]\centering
-\includegraphics[height=0.65\textwidth]{images/sat_intro.jpg}
+\includegraphics[height=0.65\textwidth]{images/model.jpg}
 	%\caption{Gameplay Block Diagram}
 		\label{LED}
 	\end{figure}
@@ -93,56 +93,57 @@ Talk about model checking
 
 
 \section{Combinational Lock}
-	\subsection{NuSMV}
+The combinational lock verified blah blah blah...
+	
 	\subsection{Added properties}
 	
-%	\begin {table}[h]
-%	\begin {center} 
-%	%\vspace{15pt}
-%	
-%	\begin{tabular}{||l|c||}\hline
-%	%\multicolumn{3}{ |c| }{\textbf{Component List}} \\\hline	
-%		\textbf{Property}	&	\textbf{Description}			\\\hline
-%		1. $AG((open * ~up * ~down) \to (open))$ 		&	If the lock is open and it is not interrupted, it can remain open indefinitely.		 		\\\hline
-%%		2. RadioShack\textsuperscript{\textregistered} Standard Servo		&	180\degree rotation 			\\\hline
-%%		3. Ultrasonic Ranging Module HC-SR04		&	Object detection	&	\url{http://bit.ly/1lhqwjI}	 	\\\hline
-%%		4. Arduino Uno		&	Microcontroller Board			&	\url{http://bit.ly/1gBB1NG} 		\\\hline
-%%		5.	L293D Motor Driver Shield	&	Controls motors &	\url{http://bit.ly/1uILISF}	\\\hline
-%%		6. Switch	&	On/Off power button &	N/A	\\\hline
-%%		7. Batteries (not pictured) & 	9V AA External Power & 	For Arduino/motors/servo \\\hline
-%
-%		
-%	\end{tabular}
-%		\caption {Hardware Components List} \label{components}
-%	\end{center}
-%	\end{table} 
-%	
-
-% ....
-\begin{tabularx}{\textwidth}{l|X}
-  \textbf{Property} & \textbf{Description} \\
-\hline
-	1. AG((open * ~up * ~down) $\to$ (open)) 	&	If the lock is open and it is not interrupted, it can remain open indefinitely \\
-	2. AG(state=1 * ~open * down \\ * ~up * position=21) $\to$ (state=2) & A transition to state two can only happen under the required circumstances \\
-
-	3. 	AG((open * up * ~down) $\vee$ \\ (open * down * ~up)) $\to$ AX(~open) & If the lock is open and it is interrupted the the lock will close \\
-
-	4. AG(EF(~open)) & It is always possible for the lock to be closed\\
-		
-
-	5. AG(down * position=15) $\to$ (~open) & The lock will not open by counting down to 15\\
-		
-\end{tabularx}	
 	
+
+	\textbf{Property 1:} AG((open * ~up * ~down) $\to$ (open)) 	\\	
+	\textbf{Description:} If the lock is open and it is not interrupted, it can remain open indefinitely. \\
+	\vspace{12pt}
+	\textbf{Property 2:} AG(state=1 * ~open * down  * ~up * position=21) $\to$ (state=2)\\ 
+	\textbf{Description:} A transition to state two can only happen under the required circumstances. \\
+	\vspace{12pt}
+	\textbf{Property 3:} AG((open * up * ~down) $\vee$  (open * down * ~up)) $\to$ AX(~open)\\ \textbf{Description:} If the lock is open and it is interrupted the the lock will close. \\
+	\vspace{12pt}
+	\textbf{Property 4:} AG(EF(~open)) \\
+	\textbf{Description:} It is always possible for the lock to be closed.\\
+	\vspace{12pt}
+	\textbf{Property 5:} AG(down * position=15) $\to$ (~open) \\
+	\textbf{Description:} The lock will not open by counting down to 15.\\
 
 	
 	\subsection{Results}
-	\subsection{Proofs}
-1. In the diagram, the red one mark the instance that shows this property is true. In state three the lock is open and if neither up, nor down is asserted then the lock continues to stay in state three and remain open.
-2. In the diagram, the red two mark the instance that shows this property is true. In order for a transition to state two, you must have been in state one, the position of the count must be at 21, and you must have reached 21 by counting down.
-3. In the diagram, the red three mark the instance that shows this property is true. In state three the lock is open, the only way to transition from state three, and thus close the lock, is by moving the position count up or down. If either of these happen there will be a transition to state zero and the lock will be closed.
-4. In the diagram, the red four mark the instance that shows this property is true. In states zero, one, and two the lock is closed. State three is the only state in which the lock is open. Since there is a transition out of state three that is possible then there exist the possibility for the lock to be closed.
-5. In the diagram, the red five mark the instance that shows this property is true. If in state two and counting up occurs there will be a transition to state zero. Therefore the lock will not be opened. 
+	%TODO remove line numbers?
+ \begin{lstlisting}[caption=NuSMV Output, label=p1_out]		
+	-- specification (AG ((open & !up) & !down) -> open)  is true
+	-- specification (AG ((((state = left_12 & !open) & down) & !up) & position = 21) -> state = right_21)  is true
+	-- specification (AG (((open & up) & !down) | ((open & down) & !up)) -> AX !open)  is true
+	-- specification AG (EF !open)  is true
+	-- specification (AG (down & position = 15) -> !open)  is true
+
+  \end{lstlisting}
+	
+
+
+\subsection{Proofs}
+The properties mentioned above are explain in figure \ref{p1_p}.
+
+	\begin{figure}[h]\centering
+	\includegraphics[height=0.45\textwidth]{images/p1_proof.png}
+	\caption{Diagram showing Lock States}
+		\label{p1_p}
+	\end{figure}
+
+\begin{enumerate}
+\item In state three the lock is open and if neither up, nor down is asserted then the lock continues to stay in state three and remain open.
+\item In order for a transition to state two, you must have been in state one, the position of the count must be at 21, and you must have reached 21 by counting down.
+\item In state three the lock is open, the only way to transition from state three, and thus close the lock, is by moving the position count up or down. If either of these happen there will be a transition to state zero and the lock will be closed.
+\item In states zero, one, and two the lock is closed. State three is the only state in which the lock is open. Since there is a transition out of state three that is possible then there exist the possibility for the lock to be closed.
+\item If in state two and counting up occurs there will be a transition to state zero. Therefore the lock will not be opened. 
+\end{enumerate}	
+
 	
 %\begin{figure}[h!]\centering
 %\includegraphics[height=0.55\textwidth]{images/c1c2.PNG}
@@ -153,51 +154,78 @@ Talk about model checking
 \section{Kripke Structures} 
 
 \subsection{Figure 1}
-	\subsection{NuSMV}
 	\subsection{Added properties}
-	1. This property states that from state three, the next transition must be to state four.
-		AG(state=3) → AX(state=4)
-
-	2. This property states that from state four, the next transition must be to state two.
-		AG(state=4) → AX(state=2)
-
-	3. This property states that from state five, it is possible to remain in state five indefinitely.
-		AG(state=5) → EG(state=5)
-
-	4. This property states that from state one, the next state cannot be five.
-		AG(state=1) → ~EG(state=5)
-
-	5. This property states that state three is reachable by state two or state five.
-		AG(state=2 | state=5) → AX(state=3) 
 	
-	\subsection{Results}
-	\subsection{Proofs
-1. In the diagram, the red one mark the instance that shows this property is true. If in state three there is only one possible transition. When in state three the next state will be state four.
-2. In the diagram, the red two mark the instance that shows this property is true. If in state four there is only one possible transition. When in state four the next state will be state two.
-3. In the diagram, the red three mark the instance that shows this property is true. If in state five one possible transition loops back to state five, therefore once you get in state five it is always possible to remain in state five.
-4. In the diagram, the red four mark the instance that shows this property is true. If in state one, there is no transition to state five. Therefore, there is no path that leads from state one, to state five as the next state.
-5. In the diagram, the red five mark the instance that shows this property is true. If in state two, or state five, there is a possible transition to state three.
-	}
-\subsection{Figure 2}
-	\subsection{NuSMV}
-	\subsection{Added properties}
-	1. This property states that from state six, the next transition must be to state seven.
-		AG(state=6) → AX(state=7)
-
-	2. This property states that from state three, the next transition must be to state four.
-		AG(state=7) → AX(state=4)
-
-	3. This property states that if in state three and the door is open then the next state, is state one.
-		AG(state=3 * door) → AX(state=1)
-
-	4. This property states that if in state five and a reset is signaled then the next state, is state three.
-		AG(state=5 * reset) → AX(state=3)
-
-	5. This property states that if in state four and it is cooking then it will remain in state four.
-		AG(state=4 * cook) → AX(state=4)
+		\textbf{Property 1:} 	AG(state=3) $\to$ AX(state=4) 	\\	
+		\textbf{Description:} From state three, the next transition must be to state four. \\
+		\vspace{12pt}
+		
+		\textbf{Property 2:} AG(state=4) $\to$ AX(state=2)\\ 
+		\textbf{Description:} From state four, the next transition must be to state two. \\
+		\vspace{12pt}
+		
+		\textbf{Property 3:} 	AG(state=5) $\to$ EG(state=5)\\ 
+		\textbf{Description:} From state five, it is possible to remain in state five indefinitely. \\
+		\vspace{12pt}
+		
+		\textbf{Property 4:} AG(state=1) $\to$ ~EG(state=5) \\
+		\textbf{Description:} From state one, the next state cannot be five.\\
+		\vspace{12pt}
+		
+		\textbf{Property 5:} AG(state=2 | state=5) $\to$ AX(state=3)  \\
+		\textbf{Description:} State three is reachable by state two or state five.\\
+	
 	
 	\subsection{Results}
 	\subsection{Proofs}
+	The properties mentioned above are explain in figure \ref{p2_p}.
+	\begin{figure}[h]\centering
+	\includegraphics[height=0.45\textwidth]{images/p2_1_proof.png}
+		\caption{State Diagram Explaining Results}
+			\label{p2_p}
+		\end{figure}
+\begin{enumerate}
+\item If in state three there is only one possible transition. When in state three the next state will be state four.
+\item  If in state four there is only one possible transition. When in state four the next state will be state two.
+\item  If in state five one possible transition loops back to state five, therefore once you get in state five it is always possible to remain in state five.
+\item  If in state one, there is no transition to state five. Therefore, there is no path that leads from state one, to state five as the next state.
+\item  If in state two, or state five, there is a possible transition to state three.
+\end{enumerate}	
+
+	
+\subsection{Figure 2}
+	\subsection{Added properties}
+	
+		\textbf{Property 1:} 	AG(state=6) $\to$ AX(state=7) 	\\	
+		\textbf{Description:} From state six, the next transition must be to state seven. \\
+		\vspace{12pt}
+		
+		\textbf{Property 2:} AG(state=7) $\to$ AX(state=4)\\ 
+		\textbf{Description:} From state three, the next transition must be to state four. \\
+		\vspace{12pt}
+		
+		\textbf{Property 3:} 	AG(state=3 * door) $\to$ AX(state=1)\\ 
+		\textbf{Description:} If in state three and the door is open then the next state, is state one. \\
+		\vspace{12pt}
+		
+		\textbf{Property 4:} AG(state=5 * reset) $\to$ AX(state=3) \\
+		\textbf{Description:} If in state five and a reset is signaled then the next state, is state three.\\
+		\vspace{12pt}
+		
+		\textbf{Property 5:} AG(state=4 * cook) $\to$ AX(state=4)  \\
+		\textbf{Description:} If in state four and it is cooking then it will remain in state four.\\
+		
+		
+	
+	\subsection{Results}
+	\subsection{Proofs}
+	
+	\begin{figure}[h]\centering
+	\includegraphics[height=0.45\textwidth]{images/p2_2_proof.png}
+		\caption{State Diagram Explaining Results}
+			\label{p2_p}
+		\end{figure}
+		
 1. In the diagram, the red one mark the instance that shows this property is true. If in state six there is only one possible transition. When in state six, the “warm up” signal is asserted, and the next state will be state seven.
 2. In the diagram, the red two mark the instance that shows this property is true. If in state seven there is only one possible transition. When in state seven, the “start cooking” signal is asserted, and the next state will be state four.
 3. In the diagram, the red three mark the instance that shows this property is true. If in state three and the “door open” signal is asserted, then the next state will be state one.
@@ -215,11 +243,22 @@ Talk about model checking
 %	\end{figure}
 
 \section{Equivalence Checking} 
+We performed equivalence checking by model checking on the sequential design from homework 2.
 \subsection{NuSMV}
 \subsection{Results}
-System Diameter.
-Reachable states
-Check AG(output=0)
+
+The results from the command line after running \texttt{nuSMV -int p3.smv} are:
+ \begin{lstlisting}[caption=NuSMV Interactive Output, label=p3_out]	
+NuSMV > go
+NuSMV > pick_state
+NuSMV > print_reachable_states
+######################################################################
+system diameter: 4
+reachable states: 9 (2^3.16993) out of 64 (2^6)
+######################################################################
+\end{lstlisting}
+
+
 
 %  
 %\section{Results}

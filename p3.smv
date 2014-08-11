@@ -89,3 +89,5 @@ next (out) :=
 		(state = S15) & (x)	: TRUE;
 		(state = S15) & (!x)	: TRUE;
 	esac;
+
+--SPEC AG (!out)
