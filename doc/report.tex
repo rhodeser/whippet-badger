@@ -154,7 +154,7 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 \section{Kripke Structures} 
 
 \subsection{Figure 1}
-	\subsection{Added properties}
+	\subsubsection{Added properties}
 	
 		\textbf{Property 1:} 	AG(state=3) $\to$ AX(state=4) 	\\	
 		\textbf{Description:} From state three, the next transition must be to state four. \\
@@ -176,7 +176,7 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 		\textbf{Description:} State three is reachable by state two or state five.\\
 	
 	
-	\subsection{Results}
+	\subsubsection{Results}
 	
 	\begin{lstlisting}[caption=NuSMV Kripke Diagram Output, label=p2_1_out]	
 	-- specification (AG state = 3 -> AX state = 4)  is true
@@ -186,7 +186,7 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 	-- specification (AG (state = 2 | state = 5) -> AX state = 3)  is true
 	\end{lstlisting}
 	
-	\subsection{Proofs}
+	\subsubsection{Proofs}
 	The properties mentioned above are explain in figure \ref{p2_p}.
 	\begin{figure}[h]\centering
 	\includegraphics[height=0.45\textwidth]{images/p2_1_proof.png}
@@ -203,7 +203,7 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 
 	
 \subsection{Figure 2}
-	\subsection{Added properties}
+	\subsubsection{Added properties}
 	
 		\textbf{Property 1:} 	AG(state=6) $\to$ AX(state=7) 	\\	
 		\textbf{Description:} From state six, the next transition must be to state seven. \\
@@ -226,7 +226,7 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 		
 		
 	
-	\subsection{Results}
+	\subsubsection{Results}
 		\begin{lstlisting}[caption=NuSMV Kripke Diagram Output, label=p2_2_out]	
 -- specification (AG state = 6 -> AX state = 7)  is true
 -- specification (AG state = 7 -> AX state = 4)  is true
@@ -236,19 +236,25 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 		\end{lstlisting}
 	
 	
-	\subsection{Proofs}
+	\subsubsection{Proofs}
 	
 	\begin{figure}[h]\centering
 	\includegraphics[height=0.45\textwidth]{images/p2_2_proof.png}
 		\caption{Oven State Diagram}
 			\label{p2_p}
 		\end{figure}
-		
-1. In the diagram, the red one mark the instance that shows this property is true. If in state six there is only one possible transition. When in state six, the “warm up” signal is asserted, and the next state will be state seven.
-2. In the diagram, the red two mark the instance that shows this property is true. If in state seven there is only one possible transition. When in state seven, the “start cooking” signal is asserted, and the next state will be state four.
-3. In the diagram, the red three mark the instance that shows this property is true. If in state three and the “door open” signal is asserted, then the next state will be state one.
-4. In the diagram, the red four mark the instance that shows this property is true.  If in state five and the “reset” signal is asserted, then the next state will be state three.
-5. In the diagram, the red five mark the instance that shows this property is true.  If in state four and the “cooking” signal is asserted, then the next state will be state four.
+
+
+\begin{enumerate}
+\item If in state six there is only one possible transition. When in state six, the “warm up” signal is asserted, and the next state will be state seven.
+\item If in state seven there is only one possible transition. When in state seven, the “start cooking” signal is asserted, and the next state will be state four.
+\item If in state three and the “door open” signal is asserted, then the next state will be state one.
+\item If in state five and the “reset” signal is asserted, then the next state will be state three.
+\item If in state four and the “cooking” signal is asserted, then the next state will be state four.
+\end{enumerate}	
+
+
+
 	
 	
 
