@@ -177,6 +177,15 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 	
 	
 	\subsection{Results}
+	
+	\begin{lstlisting}[caption=NuSMV Kripke Diagram Output, label=p2_1_out]	
+	-- specification (AG state = 3 -> AX state = 4)  is true
+	-- specification (AG state = 4 -> AX state = 2)  is true
+	-- specification (AG state = 5 -> EG state = 5)  is true
+	-- specification (AG state = 1 -> !(EG state = 5))  is true
+	-- specification (AG (state = 2 | state = 5) -> AX state = 3)  is true
+	\end{lstlisting}
+	
 	\subsection{Proofs}
 	The properties mentioned above are explain in figure \ref{p2_p}.
 	\begin{figure}[h]\centering
@@ -218,11 +227,20 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 		
 	
 	\subsection{Results}
+		\begin{lstlisting}[caption=NuSMV Kripke Diagram Output, label=p2_2_out]	
+-- specification (AG state = 6 -> AX state = 7)  is true
+-- specification (AG state = 7 -> AX state = 4)  is true
+-- specification (AG (state = 3 & open_door) -> AX state = 1)  is true
+-- specification (AG (state = 5 & reset) -> AX state = 3)  is true
+-- specification (AG (state = 4 & cook) -> AX state = 4)  is true
+		\end{lstlisting}
+	
+	
 	\subsection{Proofs}
 	
 	\begin{figure}[h]\centering
 	\includegraphics[height=0.45\textwidth]{images/p2_2_proof.png}
-		\caption{State Diagram Explaining Results}
+		\caption{Oven State Diagram}
 			\label{p2_p}
 		\end{figure}
 		
@@ -244,7 +262,6 @@ The properties mentioned above are explain in figure \ref{p1_p}.
 
 \section{Equivalence Checking} 
 We performed equivalence checking by model checking on the sequential design from homework 2.
-\subsection{NuSMV}
 \subsection{Results}
 
 The results from the command line after running \texttt{nuSMV -int p3.smv} are:

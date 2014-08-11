@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.6)  10 AUG 2014 17:53
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.6)  10 AUG 2014 19:06
 entering extended mode
 **report.tex
 
@@ -890,7 +890,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count154
-<images/model.jpg, id=78, 361.35pt x 419.5675pt>
+<images/model.jpg, id=74, 361.35pt x 419.5675pt>
 File: images/model.jpg Graphic file (type jpg)
  <use images/model.jpg>
 Package pdftex.def Info: images/model.jpg used on input line 55.
@@ -929,7 +929,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
 
-<images/p1_proof.png, id=89, 537.80925pt x 399.894pt>
+<images/p1_proof.png, id=85, 537.80925pt x 399.894pt>
 File: images/p1_proof.png Graphic file (type png)
 
 <use images/p1_proof.png>
@@ -945,12 +945,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[2] <images/p2_1_proof.png, id=116, 330.63525pt x 172.2435pt>
-File: images/p2_1_proof.png Graphic file (type png)
+[2]
+Overfull \hbox (3.0pt too wide) in paragraph at lines 181--181
+[] [][][][][][] 
+ []
 
-<use images/p2_1_proof.png>
-Package pdftex.def Info: images/p2_1_proof.png used on input line 183.
-(pdftex.def)             Requested size: 405.79605pt x 211.38832pt.
+
+Overfull \hbox (3.0pt too wide) in paragraph at lines 181--181
+[] [][][][][][] 
+ []
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -959,7 +962,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3 <C:/Users/rhodesej/Documents/PSU/582/projects/finalproj/whippet-badger/doc/i
-mages/p1_proof.png>]
+mages/p1_proof.png>] <images/p2_1_proof.png, id=120, 330.63525pt x 172.2435pt>
+File: images/p2_1_proof.png Graphic file (type png)
+
+<use images/p2_1_proof.png>
+Package pdftex.def Info: images/p2_1_proof.png used on input line 192.
+(pdftex.def)             Requested size: 405.79605pt x 211.38832pt.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -968,11 +977,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [4 <C:/Users/rhodesej/Documents/PSU/582/projects/finalproj/whippet-badger/doc/i
 mages/p2_1_proof.png>]
-<images/p2_2_proof.png, id=138, 464.33475pt x 301.125pt>
+Overfull \hbox (3.0pt too wide) in paragraph at lines 230--230
+[] [][][][][][] 
+ []
+
+
+Overfull \hbox (3.0pt too wide) in paragraph at lines 230--230
+[] [][][][][][] 
+ []
+
+<images/p2_2_proof.png, id=140, 464.33475pt x 301.125pt>
 File: images/p2_2_proof.png Graphic file (type png)
 
 <use images/p2_2_proof.png>
-Package pdftex.def Info: images/p2_2_proof.png used on input line 224.
+Package pdftex.def Info: images/p2_2_proof.png used on input line 242.
 (pdftex.def)             Requested size: 325.97443pt x 211.38832pt.
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
@@ -1013,12 +1031,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5 <C:/Users/rhodesej/Documents/PSU/582/projects/finalproj/whippet-badger/doc/i
 mages/p2_2_proof.png>]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 251--251
+Overfull \hbox (3.0pt too wide) in paragraph at lines 268--268
 [] [][][][][][] 
  []
 
 
-Overfull \hbox (3.0pt too wide) in paragraph at lines 251--251
+Overfull \hbox (3.0pt too wide) in paragraph at lines 268--268
 [] [][][][][][] 
  []
 
@@ -1031,13 +1049,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 266.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 266.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 283.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 283.
 
 (C:\Users\rhodesej\Documents\PSU\582\projects\finalproj\whippet-badger\doc\repo
 rt.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 266.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 266.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 283.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 283.
 
 
 Package rerunfilecheck Warning: File `report.out' has changed.
@@ -1045,22 +1063,22 @@ Package rerunfilecheck Warning: File `report.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: 3472E85B380E4AFDE3E6443C85537027;1040
-(rerunfilecheck)             After:  F7BC150452509AB288EFA714E38D712C;984.
+(rerunfilecheck)             Before: F7BC150452509AB288EFA714E38D712C;984
+(rerunfilecheck)             After:  EC81E1AEE7FF0FA8FA4078D3D28F517C;928.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 266.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 283.
  ) 
 Here is how much of TeX's memory you used:
- 18257 strings out of 493921
- 318660 string characters out of 3147274
- 451960 words of memory out of 3000000
- 21183 multiletter control sequences out of 15000+200000
+ 18269 strings out of 493921
+ 318804 string characters out of 3147274
+ 452051 words of memory out of 3000000
+ 21184 multiletter control sequences out of 15000+200000
  13976 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  56i,11n,55p,417b,1178s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{subsection.3.9} has been referenced but does not 
+pdfTeX warning (dest): name{subsection.4.2} has been referenced but does not 
 exist, replaced by a fixed one
 
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Prog
@@ -1074,9 +1092,9 @@ sfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (6 pages, 403910 bytes).
+Output written on report.pdf (6 pages, 406330 bytes).
 PDF statistics:
- 209 PDF objects out of 1000 (max. 8388607)
- 53 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 219 PDF objects out of 1000 (max. 8388607)
+ 64 named destinations out of 1000 (max. 500000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
