@@ -54,10 +54,12 @@ next (state) :=
 		(state = S15) & (!x)	: S5;		
 	esac;
 	
+
+        -- our output from the XOR'ed circuit.
 next (out) := 
 	case
-		(state = S0) & (x)	: TRUE;
-		(state = S0) & (!x)	: TRUE;
+		(state = S0) & (x)	: FALSE;
+		(state = S0) & (!x)	: FALSE;
 		(state = S1) & (x)	: FALSE;
 		(state = S1) & (!x)	: FALSE;
 		(state = S2) & (x)	: FALSE;
@@ -66,8 +68,8 @@ next (out) :=
 		(state = S3) & (!x)	: FALSE;
 		(state = S4) & (x)	: FALSE;
 		(state = S4) & (!x)	: FALSE;
-		(state = S5) & (x)	: TRUE;
-		(state = S5) & (!x)	: TRUE;
+		(state = S5) & (x)	: FALSE;
+		(state = S5) & (!x)	: FALSE;
 		(state = S6) & (x)	: FALSE;
 		(state = S6) & (!x)	: FALSE;
 		(state = S7) & (x)	: FALSE;
@@ -76,8 +78,8 @@ next (out) :=
 		(state = S8) & (!x)	: FALSE;
 		(state = S9) & (x)	: FALSE;
 		(state = S9) & (!x)	: FALSE;
-		(state = S10) & (x)	: TRUE;
-		(state = S10) & (!x)	: TRUE;
+		(state = S10) & (x)	: FALSE;
+		(state = S10) & (!x)	: FALSE;
 		(state = S11) & (x)	: FALSE;
 		(state = S11) & (!x)	: FALSE;
 		(state = S12) & (x)	: FALSE;
@@ -86,8 +88,8 @@ next (out) :=
 		(state = S13) & (!x)	: FALSE;
 		(state = S14) & (x)	: FALSE;
 		(state = S14) & (!x)	: FALSE;
-		(state = S15) & (x)	: TRUE;
-		(state = S15) & (!x)	: TRUE;
+		(state = S15) & (x)	: FALSE;
+		(state = S15) & (!x)	: FALSE;
 	esac;
 
 SPEC AG (!out) 

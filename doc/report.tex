@@ -252,17 +252,7 @@ reachable states: 9 (2^3.16993) out of 64 (2^6)
 
 When running the simulation normally, we see that \texttt{AG(out=0)} is false:
  \begin{lstlisting}[caption=NuSMV Interactive Output, label=p3_out]	
--- specification AG !out  is false
--- as demonstrated by the following execution sequence
-Trace Description: CTL Counterexample
-Trace Type: Counterexample
--> State: 1.1 <-
-  state = S0
-  x = FALSE
-  out = FALSE
--> State: 1.2 <-
-  state = S10
-  out = TRUE
+-- specification AG !out  is true
 \end{lstlisting}
 
 
