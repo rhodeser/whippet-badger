@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.6)  10 AUG 2014 22:31
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.6)  12 AUG 2014 09:02
 entering extended mode
 **report.tex
 
@@ -784,7 +784,11 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \@float@every@table=\toks46
 
 (C:\Users\rhodesej\Documents\PSU\582\projects\finalproj\whippet-badger\doc\repo
-rt.aux)
+rt.aux
+
+LaTeX Warning: Label `p3_out' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
@@ -898,36 +902,36 @@ Package pdftex.def Info: images/model.jpg used on input line 55.
 /rhodesej/Documents/PSU/582/projects/finalproj/whippet-badger/doc/images/model.
 jpg>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 87.
+nput line 88.
 
-Overfull \hbox (3.0pt too wide) in paragraph at lines 87--87
+Overfull \hbox (3.0pt too wide) in paragraph at lines 88--88
 [] [][][][][][] 
  []
 
 
-Overfull \hbox (3.0pt too wide) in paragraph at lines 87--87
+Overfull \hbox (3.0pt too wide) in paragraph at lines 88--88
 [] [][][][][][] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 88.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 89.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 88.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 90.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 89.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 91.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 90.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
 
 <images/p1_proof.png, id=77, 537.80925pt x 399.894pt>
 File: images/p1_proof.png Graphic file (type png)
 
 <use images/p1_proof.png>
-Package pdftex.def Info: images/p1_proof.png used on input line 102.
+Package pdftex.def Info: images/p1_proof.png used on input line 103.
 (pdftex.def)             Requested size: 284.29076pt x 211.38832pt.
 
 
@@ -940,21 +944,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 149--149
+Overfull \hbox (3.0pt too wide) in paragraph at lines 150--150
 [] [][][][][][] 
  []
 
 
-Overfull \hbox (3.0pt too wide) in paragraph at lines 149--149
+Overfull \hbox (3.0pt too wide) in paragraph at lines 150--150
 [] [][][][][][] 
  []
-
-<images/p2_1_proof.png, id=106, 330.63525pt x 172.2435pt>
-File: images/p2_1_proof.png Graphic file (type png)
-
-<use images/p2_1_proof.png>
-Package pdftex.def Info: images/p2_1_proof.png used on input line 160.
-(pdftex.def)             Requested size: 405.79605pt x 211.38832pt.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -963,7 +960,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [3 <C:/Users/rhodesej/Documents/PSU/582/projects/finalproj/whippet-badger/doc/i
-mages/p1_proof.png>]
+mages/p1_proof.png>] <images/p2_1_proof.png, id=112, 330.63525pt x 172.2435pt>
+File: images/p2_1_proof.png Graphic file (type png)
+
+<use images/p2_1_proof.png>
+Package pdftex.def Info: images/p2_1_proof.png used on input line 161.
+(pdftex.def)             Requested size: 405.79605pt x 211.38832pt.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -972,12 +975,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [4 <C:/Users/rhodesej/Documents/PSU/582/projects/finalproj/whippet-badger/doc/i
 mages/p2_1_proof.png>]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 198--198
+Overfull \hbox (3.0pt too wide) in paragraph at lines 199--199
 [] [][][][][][] 
  []
 
 
-Overfull \hbox (3.0pt too wide) in paragraph at lines 198--198
+Overfull \hbox (3.0pt too wide) in paragraph at lines 199--199
 [] [][][][][][] 
  []
 
@@ -985,20 +988,8 @@ Overfull \hbox (3.0pt too wide) in paragraph at lines 198--198
 File: images/p2_2_proof.png Graphic file (type png)
 
 <use images/p2_2_proof.png>
-Package pdftex.def Info: images/p2_2_proof.png used on input line 210.
+Package pdftex.def Info: images/p2_2_proof.png used on input line 211.
 (pdftex.def)             Requested size: 325.97443pt x 211.38832pt.
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
@@ -1026,12 +1017,35 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5 <C:/Users/rhodesej/Documents/PSU/582/projects/finalproj/whippet-badger/doc/i
 mages/p2_2_proof.png>]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 242--242
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+
+Overfull \hbox (3.0pt too wide) in paragraph at lines 243--243
 [] [][][][][][] 
  []
 
 
-Overfull \hbox (3.0pt too wide) in paragraph at lines 242--242
+Overfull \hbox (3.0pt too wide) in paragraph at lines 243--243
+[] [][][][][][] 
+ []
+
+
+Overfull \hbox (3.0pt too wide) in paragraph at lines 254--254
+[] [][][][][][] 
+ []
+
+
+Overfull \hbox (3.0pt too wide) in paragraph at lines 254--254
 [] [][][][][][] 
  []
 
@@ -1044,25 +1058,29 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 257.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 257.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 273.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 273.
 
 (C:\Users\rhodesej\Documents\PSU\582\projects\finalproj\whippet-badger\doc\repo
 rt.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 257.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 257.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 273.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 273.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 028948CB767111599EBABAA9566A6CA8;939.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 257.
+(rerunfilecheck)             Checksum: 8C0F7C9C1A3D46DC0594B75A033AD137;942.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 273.
  ) 
 Here is how much of TeX's memory you used:
- 18271 strings out of 493921
- 318859 string characters out of 3147274
- 453081 words of memory out of 3000000
- 21183 multiletter control sequences out of 15000+200000
+ 18284 strings out of 493921
+ 319028 string characters out of 3147274
+ 453120 words of memory out of 3000000
+ 21184 multiletter control sequences out of 15000+200000
  13976 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 56i,12n,55p,417b,1178s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,11n,55p,417b,1178s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
@@ -1074,9 +1092,9 @@ cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/P
 rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (6 pages, 406296 bytes).
+Output written on report.pdf (6 pages, 412786 bytes).
 PDF statistics:
- 218 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 500000)
+ 233 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 500000)
  153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
