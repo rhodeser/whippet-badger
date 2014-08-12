@@ -24,15 +24,6 @@ ASSIGN
             TRUE : FALSE;            -- otherwise it's closed
         esac;
 
-    -- reachability states, not including inputs...
-    -- This is probably not detailed enough, but was in the example. Better version below
-    -- next (state)    := 
-    --    case
-    --       state = 0             :   {0, 1};
-    --       state = 1             :   {0, 1, 2};
-    --       state = 2             :   {0, 2, 3};
-    --       state = 3             :   {0, 3, 4};
-    --   esac;
     
     -- Defining when we're turning left or right
     next (upReg)        := up & !down;
@@ -76,6 +67,3 @@ SPEC AG(EF(!open))
 
 -- This property states that the lock will not open by counting down to 15.
 SPEC AG(down & position=15) -> (!open)
-
-
-

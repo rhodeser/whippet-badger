@@ -10,7 +10,6 @@ VAR
     b               : boolean;
     c               : boolean;
 
-
 ASSIGN
     init (state)    := 1;
     init (a)        := FALSE;
@@ -25,13 +24,6 @@ ASSIGN
            state = 4            :        2;
            state = 5            :{1, 3, 5};
         esac;
-
---how to write what current vars are, a,b,c
-        --if state = 1, : a
-
-    -- Include a,b,c values in here ^  ?
-    -- define if in state ___, a,b,c = ___
-
 
 -- This property states that from state three, the next transition must be to state four.
 SPEC    AG(state=3) -> AX(state=4)

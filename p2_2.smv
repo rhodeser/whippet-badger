@@ -19,16 +19,12 @@ VAR
     cook                : boolean;
     reset               : boolean;
 
-    --inputs 
-    -- need to specify how we get to each of them?
-
 ASSIGN
     init (state)        := 1;
     init (start)        := FALSE;
     init (close)        := FALSE;
     init (heat)         := FALSE;
     init (error)        := FALSE;
-    --init (open_door)    := FALSE;
 
     next (state)        :=
         case 
@@ -40,8 +36,6 @@ ASSIGN
            state = 6            :        7;
            state = 7            :        4;
         esac;
-
-    -- define if in state ___, a,b,c = ___
 
 -- This property states that from state six, the next transition must be to state seven.
 SPEC   AG(state=6) -> AX(state=7)

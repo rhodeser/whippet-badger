@@ -54,8 +54,6 @@ next (state) :=
 		(state = S15) & (!x)	: S5;		
 	esac;
 	
-
-        -- our output from the XOR'ed circuit.
 next (out) := 
 	case
 		(state = S0) & (x)	: FALSE;
